@@ -8,12 +8,10 @@ export const EMAIL = "littlebitesgta@gmail.com";
 export const PHONE_DISPLAY = "647-532-6653";
 export const PHONE_TEL = "+16475326653";
 
+export const SITE_URL = "https://littlebitesgta.vercel.app";
+
 export function getSiteUrl() {
-  const production = process.env.VERCEL_PROJECT_PRODUCTION_URL;
-  if (production) return `https://${production}`;
-  const preview = process.env.VERCEL_URL;
-  if (preview) return `https://${preview}`;
-  return "http://localhost:3000";
+  return SITE_URL;
 }
 
 export const occasions = [
