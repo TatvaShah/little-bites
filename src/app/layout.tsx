@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Outfit } from "next/font/google";
-import { getSiteUrl } from "@/lib/site";
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const display = Fraunces({
@@ -15,12 +15,11 @@ const sans = Outfit({
   display: "swap",
 });
 
-const siteUrl = getSiteUrl();
 const description =
   "Little bites. Big celebrations. Platters, slider trays, grazing tables, and kids munch cups for parties across the GTA.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Little Bites | Party and event catering in the GTA",
     template: "%s | Little Bites",
@@ -37,14 +36,14 @@ export const metadata: Metadata = {
     "kids party food",
     "Toronto catering",
   ],
-  alternates: { canonical: "/" },
+  alternates: { canonical: SITE_URL },
   openGraph: {
     title: "Little Bites | Party and event catering in the GTA",
     description,
     locale: "en_CA",
     type: "website",
     siteName: "Little Bites",
-    url: "/",
+    url: SITE_URL,
   },
   twitter: {
     card: "summary_large_image",
