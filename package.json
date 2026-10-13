@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "og": "next build && node scripts/make-og.mjs"
   },
   "dependencies": {
     "next": "16.4.0",

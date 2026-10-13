@@ -2,6 +2,7 @@ import Image from "next/image";
 
 const links = [
   { href: "#spread", label: "The spread" },
+  { href: "#menu", label: "Menu" },
   { href: "#occasions", label: "Occasions" },
   { href: "#gallery", label: "Gallery" },
   { href: "#reels", label: "Reels" },
@@ -35,7 +36,7 @@ export function SiteHeader() {
         Plan a party
       </a>
       <details className="mobile-menu">
-        <summary>Menu</summary>
+        <summary aria-label="Open navigation">Explore</summary>
         <nav aria-label="Mobile">
           {links.map((link) => (
             <a key={link.href} href={link.href}>

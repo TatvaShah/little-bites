@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { OrderBuilder } from "@/components/order-builder";
+import { MenuTabs } from "@/components/menu-tabs";
 import { ReelGrid } from "@/components/reel-grid";
 import { SiteHeader } from "@/components/site-header";
 import {
@@ -258,6 +259,19 @@ export default function HomePage() {
               sizes="(max-width: 860px) 100vw, 40vw"
             />
           </aside>
+        </section>
+
+        <section className="section menu-section" id="menu">
+          <div className="section-intro">
+            <p className="eyebrow">The menu</p>
+            <h2>Pick your bites.</h2>
+            <p>
+              Mini eats, bowls, platters, pasta trays, sweets, and drinks.
+              Mix and match for your party, and we will build the table
+              around it.
+            </p>
+          </div>
+          <MenuTabs />
         </section>
 
         <section className="occasions" id="occasions">

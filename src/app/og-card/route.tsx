@@ -1,11 +1,12 @@
 import { ImageResponse } from "next/og";
 
-export const alt =
-  "Little Bites. Big celebrations. Party catering across the GTA.";
-export const size = { width: 1200, height: 630 };
-export const contentType = "image/png";
+// Build-time source for public/og.jpg. scripts/make-og.mjs reads the prerendered PNG
+// from .next and saves a compressed 1200x630 JPEG. Not linked anywhere on the site.
+export const dynamic = "force-static";
 
-export default function OpenGraphImage() {
+const size = { width: 1200, height: 630 };
+
+export async function GET() {
   return new ImageResponse(
     (
       <div
@@ -35,11 +36,11 @@ export default function OpenGraphImage() {
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ fontSize: 86, lineHeight: 0.95 }}>Little bites.</div>
-          <div style={{ fontSize: 86, lineHeight: 0.95, fontStyle: "italic" }}>
+          <div style={{ fontSize: 86, lineHeight: 0.95, color: "#e7b4bc" }}>
             Big celebrations.
           </div>
           <div style={{ marginTop: 28, fontSize: 30, color: "#f3d7c8" }}>
-            Platters, slider trays, grazing tables, and kids munch cups.
+            Bites, bowls, platters, pasta trays, desserts, and drinks.
           </div>
         </div>
       </div>
