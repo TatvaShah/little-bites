@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useRef } from "react";
 
 const links = [
   { href: "#spread", label: "The spread" },
@@ -9,6 +12,28 @@ const links = [
 ];
 
 export function SiteHeader() {
+  const menuRef = useRef<HTMLDetailsElement>(null);
+
+  const closeMenu = () => {
+    menuRef.current?.removeAttribute("open");
+  };
+
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") closeMenu();
+    };
+    const onPointer = (event: PointerEvent) => {
+      const menu = menuRef.current;
+      if (menu?.open && !menu.contains(event.target as Node)) closeMenu();
+    };
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onPointer);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("pointerdown", onPointer);
+    };
+  }, []);
+
   return (
     <header className="site-header">
       <a className="brand" href="#top">
@@ -35,15 +60,17 @@ export function SiteHeader() {
       <a className="header-order" href="#order">
         Plan a party
       </a>
-      <details className="mobile-menu">
+      <details className="mobile-menu" ref={menuRef}>
         <summary aria-label="Open navigation">Explore</summary>
         <nav aria-label="Mobile">
           {links.map((link) => (
-            <a key={link.href} href={link.href}>
+            <a key={link.href} href={link.href} onClick={closeMenu}>
               {link.label}
             </a>
           ))}
-          <a href="#order">Plan a party</a>
+          <a href="#order" onClick={closeMenu}>
+            Plan a party
+          </a>
         </nav>
       </details>
     </header>
